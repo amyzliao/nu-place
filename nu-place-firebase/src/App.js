@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-// import { useData, setData } from './utilities/firebase.js';
+import { useUserState } from './utilities/firebase.js';
+import { getAuth } from 'firebase/auth';
+
 import './App.css';
 import axios from 'axios';
 import ColorPicker from "./components/ColorPicker";
@@ -7,89 +9,58 @@ import pixeldata from "./components/pixeldata.json";
 import makeBanner from "./components/header";
 import Popup from './components/Popup';
 import Timer from './components/Timer';
+import PixelGrid from './components/pixelGrid';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { SignInButton, SignOutButton } from "./components/signin.js";
 
-// TODO: store in database cooldown info for each user somehow
+const LoggedIn = ({ user }) => {
+  return (
+    <div>
+      <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
+      <SignOutButton/>
+      <PixelGrid/>
+    </div>
+  );
+};
 
-function PixelGrid() {
-  const [pixels, setPixels] = useState(pixeldata);
-  const [selectedColor, setSelectedColor] = useState("#FF0000");
-  const [lockout, setLockout] = useState(false);
+const LoggedOut = ( user ) => {
+  return (
+    <div>
+      <h4>You are not logged in. Log in to start using NU/Place!</h4>
+      <SignInButton user={ user }/>
+      <PixelGrid/>
+    </div>
+  )
+};
 
-  function handlePixelClick(row, col) {
-    // check if locked out
-    if (!lockout) {
-      // if not locked out
-      const updatedPixels = JSON.parse(JSON.stringify(pixels));
-      updatedPixels[row][col] = selectedColor;
-      setPixels(updatedPixels);
-      // lock it out
-      setButtonPopup(true);
-    }
-    
-  }
+function App() {
+  // the logged in user
+  const [user] = useUserState();
+  console.log("user:");
+  console.log(user);
 
-  const colors = [
-    "#FF0000",
-    "#00FF00",
-    "#0000FF",
-    "#FFFF00",
-    "#FF00FF"
-  ];
-
-  const Banner = ({ title, description, instructions }) => {
-    return (
-      <div class='title-group'>
-        <h1 class='title-t'>{ title }</h1>
-        <h2 class='title-d'>{ description }</h2>
-        <div class='rect-i'>
-          <h4 class='title-i'>{ instructions }</h4>
-        </div>
-      </div>
-    );
-  };
-
-  const title = "NU/Place";
-  const description = "NORTHWESTERN'S VIRTUAL ROCK";
-  const instructions = "Click on a square to paint it. You can paint one square every 5 minutes.";
-
-  const [buttonPopup, setButtonPopup] = useState(false);
+  const auth = getAuth();
+  console.log("auth");
+  console.log(auth);
+  
 
   return (
-    <>
-      <Banner title={ title } description={ description } instructions={instructions}/>
-      <div style={{ textAlign: "center" }}>
-        <div style={{ display: "inline-block" }}>
-          {pixels.map((row, rowIndex) => (
-            <div key={rowIndex} style={{ display: "flex" }}>
-              {row.map((color, colIndex) => (
-                <div
-                  key={`${rowIndex}-${colIndex}`}
-                  style={{ width: "50px", height: "50px", backgroundColor: color }}
-                  onClick={() => handlePixelClick(rowIndex, colIndex)}
-                />
-              ))}
-            </div>
-          ))}
-        </div>
-        <div
-          style={{ margin: "20px auto", display: "flex", justifyContent: "center" }}
-        >
-          <ColorPicker colors={colors} onSelect={(color) => setSelectedColor(color)} />
-        </div>
-      </div>
-      
-      <Popup trigger = {buttonPopup} setTrigger = {setButtonPopup}>
-          <Timer/>
-      </Popup>
-    </>
+    <div className="App">
+      { user ? <LoggedIn user={ user } /> : <LoggedOut user={ user }/> }
+      {/* { !user ? <></> : 
+      <BrowserRouter>
+            <Routes>
+                <Route path="/profile" element={<Profile />}/>
+                <Route path="/adoptcat" element={<AdoptCat data={data} />}/>
+                <Route path="/addcat" element={<AddCat cats={data.cats}/>}/>
+                <Route path="/" element={<Home />}/>
+            </Routes>
+      </BrowserRouter> 
+      } */}
+    </div>
   );
-}
+};
 
-export default PixelGrid;
+export default App;
 
-/* 
-<main>
-        <button onClick = {() => setButtonPopup(true)} className = "color-block">  </button>
-      </main>
 
-      */
