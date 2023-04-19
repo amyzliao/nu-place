@@ -6,10 +6,10 @@ const ColorChoice = ({ color, onSelect, selected, setSelected }) => {
     setSelected(color);
   };
 
-  console.log(color)
+  // console.log(color)
   const isSelected = selected == color;
-  console.log("is selected");
-  console.log(isSelected)
+  // console.log("is selected");
+  // console.log(isSelected)
   const style = {
       backgroundColor: color,
       width: isSelected? 35 : 30,
@@ -18,8 +18,8 @@ const ColorChoice = ({ color, onSelect, selected, setSelected }) => {
       cursor: "pointer",
       border: isSelected ? "2px solid black" : "0px solid black"
   };
-  console.log("style")
-  console.log(style)
+  // console.log("style")
+  // console.log(style)
   return (
     <div style={style} onClick={() => { onSelect(color);
                                         setSelected(color); }}/>

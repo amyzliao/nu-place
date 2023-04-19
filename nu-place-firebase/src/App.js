@@ -11,11 +11,13 @@ import { MakeBanner } from './components/banner.js';
 const LoggedIn = ({ user }) => {
   return (
     <div>
-      <div className = "sign-in-confirmation">
+      {/* <div className = "sign-in-confirmation">
         <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
-      </div>
+      </div> */}
       <div className = "sign-out-btn">
         <SignOutButton/>
+        <img className="pfp" src={ user.photoURL } alt="Profile Picture"/>
+        {/* <h5>{ user.photoURL }</h5> */}
       </div>
       <MakeBanner/>
       <PixelGrid/>
@@ -26,7 +28,7 @@ const LoggedIn = ({ user }) => {
 const LoggedOut = ( user ) => {
   return (
     <div>
-      <h4>You are not logged in. Log in to start using NU/Place!</h4>
+      {/* <h4>You are not logged in. Log in to start using NU/Place!</h4> */}
       <div className = "sign-in-btn">
         <SignInButton user={ user }/>
       </div>
