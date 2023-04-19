@@ -16,6 +16,7 @@
     padding: 32px;
     width: 100%;
     max-width: 500px;
+
 }
 
 .popup-inner-window .close-btn{
@@ -23,4 +24,8 @@
     top: 34px;
     right: 100px;
 
+}
+
+.random-number {
+    color: transparent;
 }

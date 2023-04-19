@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './Timer.css';
 
 const cooldown_time = 2;
 
@@ -44,7 +45,7 @@ function Timer() {
 
     return (
         <div className = "timer">
-            <h2>Time left before you can color another block: {timer}</h2>
+            <h2>TIME LEFT BEFORE YOU CAN COLOR ANOTHER BLOCK: {timer}</h2>
         </div>
     );
 }

@@ -11,9 +11,13 @@ import { MakeBanner } from './components/banner.js';
 const LoggedIn = ({ user }) => {
   return (
     <div>
-      <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
-      <SignOutButton/>
-      {/* <MakeBanner/> */}
+      <div className = "sign-in-confirmation">
+        <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
+      </div>
+      <div className = "sign-out-btn">
+        <SignOutButton/>
+      </div>
+      <MakeBanner/>
       <PixelGrid/>
     </div>
   );
@@ -23,8 +27,10 @@ const LoggedOut = ( user ) => {
   return (
     <div>
       <h4>You are not logged in. Log in to start using NU/Place!</h4>
-      <SignInButton user={ user }/>
-      {/* <MakeBanner/> */}
+      <div className = "sign-in-btn">
+        <SignInButton user={ user }/>
+      </div>
+      <MakeBanner/>
       <PixelGrid/>
     </div>
   )

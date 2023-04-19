@@ -1,0 +1,11 @@
+.btn-text{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.btn{
+    background-color: rgb(203, 195, 227);
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
+}

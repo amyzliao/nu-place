@@ -15,7 +15,9 @@ function Popup(props) {
           { props.children }
         </div>
       </div>
-      { setTimeout(props.setTrigger, ms(cooldown_time), false) }
+      <div className = "random-number">
+        { setTimeout(props.setTrigger, ms(cooldown_time), false) }
+      </div>
     </div>
   ) : ""
 }
