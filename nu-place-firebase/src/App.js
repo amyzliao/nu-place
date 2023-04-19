@@ -11,7 +11,9 @@ import { MakeBanner } from './components/banner.js';
 const LoggedIn = ({ user }) => {
   return (
     <div>
-      <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
+      <div className = "sign-in-confirmation">
+        <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
+      </div>
       <SignOutButton/>
       <PixelGrid/>
     </div>
