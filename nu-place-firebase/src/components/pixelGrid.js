@@ -13,14 +13,16 @@ import { MakeBanner, Banner } from "./banner";
 
 function PixelGrid() {
     const [pixels, setPixels] = useState(pixeldata);
-    const [selectedColor, setSelectedColor] = useState("#FF0000");
+    const [selectedColor, setSelectedColor] = useState();
+    // TODO: if no color selected, nothing happens
+    // TODO: deselect color
     const [lockout, setLockout] = useState(false);
 
     const currentUser = getAuth().currentUser;
   
     function handlePixelClick(row, col) {
       // check if not locked out and user is logged in
-      if (!lockout && currentUser) {
+      if (!lockout && currentUser && selectedColor) {
         // change pixel color
         const updatedPixels = JSON.parse(JSON.stringify(pixels));
         updatedPixels[row][col] = selectedColor;
@@ -47,10 +49,15 @@ function PixelGrid() {
   
     const [buttonPopup, setButtonPopup] = useState(false);
     const [signInPopup, setSignInPopup] = useState(false);
-  
+
+    // const selectColor = ({ color }) => {
+    //   // add border
+    //   setSelectedColor(color);
+    // }
+    
     return (
       <>
-        <Banner title={ title } description={ description } instructions={instructions}/>
+        {/* <Banner title={ title } description={ description } instructions={instructions}/> */}
         <div style={{ textAlign: "center" }}>
           <div style={{ display: "inline-block" }}>
             {pixels.map((row, rowIndex) => (
@@ -58,7 +65,7 @@ function PixelGrid() {
                 {row.map((color, colIndex) => (
                   <div
                     key={`${rowIndex}-${colIndex}`}
-                    style={{ width: "50px", height: "50px", backgroundColor: color }}
+                    style={{ width: "10px", height: "10px", backgroundColor: color }}
                     onClick={() => handlePixelClick(rowIndex, colIndex)}
                   />
                 ))}

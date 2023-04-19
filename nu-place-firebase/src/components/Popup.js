@@ -1,6 +1,6 @@
 import './Popup.css'
 
-const cooldown_time = 1000;
+const cooldown_time = 2;
 
 function ms( number ) {
     return number * 1000;
