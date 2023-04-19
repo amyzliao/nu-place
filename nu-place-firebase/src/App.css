@@ -47,12 +47,19 @@
     margin-top: 20px;
 }
 
-.sign-in-btn {
+/**.sign-in-btn {
     grid-column: 4 / 5;
     display: inline-block;
     float: right;
-}
+}*/
 
+.sign-in-btn, .sign-out-btn{
+    position: absolute;
+    margin-top: 10px;
+    margin-right: 10px;
+    top: 0;
+    right: 0;
+}
 .top-container {
     display: inline-block;
 }
