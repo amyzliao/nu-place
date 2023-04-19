@@ -1,6 +1,6 @@
 import './Popup.css'
 
-const cooldown_time = 5000;
+const cooldown_time = 2;
 
 function Popup(props) {
 

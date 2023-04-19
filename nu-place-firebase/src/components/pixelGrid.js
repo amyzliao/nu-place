@@ -58,7 +58,13 @@ function PixelGrid() {
       "#ffb8eb",
       "#fc03ba",
       "#ffb8b8",
-      "#fc0362"
+      "#fc0362",
+      "#ffffff",
+      "#d1d1d1",
+      "#919191",
+      "#4f4f4f",
+      "#1f1f1f",
+      "#000000"
     ];
     const title = "NU/Place";
     const description = "NORTHWESTERN'S VIRTUAL ROCK";
