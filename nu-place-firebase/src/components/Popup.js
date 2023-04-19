@@ -1,10 +1,6 @@
 import './Popup.css'
 
-const cooldown_time = 2;
-
-function ms( number ) {
-    return number * 1000;
-}
+const cooldown_time = 5000;
 
 function Popup(props) {
 
@@ -16,7 +12,7 @@ function Popup(props) {
         </div>
       </div>
       <div className = "random-number">
-        { setTimeout(props.setTrigger, ms(cooldown_time), false) }
+        { setTimeout(props.setTrigger, cooldown_time*1000, false) }
       </div>
     </div>
   ) : ""
