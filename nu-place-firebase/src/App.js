@@ -13,6 +13,7 @@ const LoggedIn = ({ user }) => {
     <div>
       <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
       <SignOutButton/>
+      {/* <MakeBanner/> */}
       <PixelGrid/>
     </div>
   );
@@ -23,6 +24,7 @@ const LoggedOut = ( user ) => {
     <div>
       <h4>You are not logged in. Log in to start using NU/Place!</h4>
       <SignInButton user={ user }/>
+      {/* <MakeBanner/> */}
       <PixelGrid/>
     </div>
   )

@@ -17,5 +17,7 @@ export const Banner = ({ title, description, instructions }) => {
   };
 
 export const MakeBanner = () => {
-    <Banner title={ title } description={ description } instructions={instructions}/>
-}
+    return (
+        <Banner title={ title } description={ description } instructions={instructions}/>
+    );
+};
