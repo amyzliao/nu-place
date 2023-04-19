@@ -15,6 +15,7 @@ const LoggedIn = ({ user }) => {
         <h4>You are signed in. Your name is { user.displayName } and your email is { user.email }. </h4>
       </div> */}
       <div className = "sign-out-btn">
+        
         <SignOutButton/>
         <img className="pfp" src={ user.photoURL } alt="Profile Picture"/>
         {/* <h5>{ user.photoURL }</h5> */}

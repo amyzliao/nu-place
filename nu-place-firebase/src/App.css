@@ -1,50 +1,52 @@
 .title-group {
     text-align: center;
-    inline-size: min-content;
     display: flex;
-    flex-direction: column;
     margin-left: 20px;
-    margin-top: -20px;
+    margin-top: 20px;
 }
 
 .title-t {
     text-transform: uppercase;
-    font-size: 3em;
-    margin-bottom: -8px;
+    font-size: 2.1em;
     font-weight: 800;
+    margin-top: -10px;
 }
 
 .title-d {
     text-transform: uppercase;
     font-size: .92em;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    line-height: 15px;
 }
 
 .rect-i {
     background: #e6c7ff;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-left: 15px;
     align-items: center;
     vertical-align: middle;
     display: flex;
-    border-radius: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
-    height: 60px;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 35px;
+    width: 300px;
 }
 
 .title-i {
-    font-size: 0.83em;
+    font-size: 0.8em;
     font-weight: 500;
     line-height: 15px;
 }
 
-.grid {
+/* .grid {
     display: flex;
     flex-direction: column;
     margin-left: 20px;
     margin-top: 20px;
+} */
+
+.canvas {
+    margin: auto;
+    width: 100%;
 }
 
 /**.sign-in-btn {

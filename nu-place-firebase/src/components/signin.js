@@ -6,7 +6,7 @@ export const SignInButton = ( ) => {
         <button
             onClick={() => signInWithGoogle()} className = "btn">
             <div className = "btn-text">
-                Log in with Google
+                LOG IN WITH GOOGLE
             </div>
         </button>
     );
@@ -17,7 +17,7 @@ export const SignOutButton = () => {
         <button
             onClick={() => signOut()} className = "btn">
             <div className = "btn-text">
-                Sign out 
+                SIGN OUT
             </div>
         </button>
     );

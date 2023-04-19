@@ -80,7 +80,7 @@ function PixelGrid() {
     // }
     
     return (
-      <>
+      <div className="canvas">
         {/* <Banner title={ title } description={ description } instructions={instructions}/> */}
         <div style={{ textAlign: "center" }}>
           <div style={{ display: "inline-block" }}>
@@ -107,9 +107,9 @@ function PixelGrid() {
             <Timer/>
         </Popup>
         <Popup trigger = {signInPopup} setTrigger = {setSignInPopup}>
-            <h1>log in to paint pixels</h1>
+            <h2>LOG IN TO PAINT PIXELS</h2>
         </Popup>
-      </>
+      </div>
     );
   }
   

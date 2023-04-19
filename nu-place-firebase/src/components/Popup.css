@@ -1,31 +1,30 @@
 .popup{
     position: fixed;
+    margin-top: 30px;
     top: 0; 
-    left: 27%;
+    left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: transparent;
-    margin-top: -33px;
     display: flex;
     justify-content: center;
-    align-items: start;
+    vertical-align: middle;
+}
 
+.wrapper {
+    margin-top: 30px;
 }
 
 .popup-inner-window{
-    position: fixed;
-    padding: 32px;
-    width: 100%;
-
+    margin-top: -30px;
 }
 
 .popup-inner-window .close-btn{
-    position: absolute;
     top: 34px;
     right: 100px;
-
 }
 
 .random-number {
     color: transparent;
+    margin-top: -100px;
 }
