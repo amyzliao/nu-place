@@ -4,8 +4,13 @@
 }
 
 .btn{
-    background-color: rgb(203, 195, 227);
+    background-color: #e6c7ff;
     border: 0;
     border-radius: 5px;
     padding: 5px;
+}
+
+.btn:hover {
+    background-color:#d4a5fb;
+    transition: 0.5s;
 }
