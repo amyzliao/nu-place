@@ -36,11 +36,29 @@ function PixelGrid() {
     }
   
     const colors = [
-      "#FF0000",
-      "#00FF00",
-      "#0000FF",
-      "#FFFF00",
-      "#FF00FF"
+      "#ff7a7a",
+      "#fc0303",
+      "#fc7303",
+      "#fcc203",
+      "#ffea00",
+      "#ebfc03",
+      "#9dfc03",
+      "#c2ffa6",
+      "#1cfc03",
+      "#03fcc2",
+      "#b8fff3",
+      "#03cefc",
+      "#b8e0ff",
+      "#0384fc",
+      "#b8bfff",
+      "#3503fc",
+      "#d0b8ff",
+      "#8003fc",
+      "#b103fc",
+      "#ffb8eb",
+      "#fc03ba",
+      "#ffb8b8",
+      "#fc0362"
     ];
     const title = "NU/Place";
     const description = "NORTHWESTERN'S VIRTUAL ROCK";
