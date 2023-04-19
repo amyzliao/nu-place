@@ -7,24 +7,30 @@ import pixeldata from "./pixeldata.json";
 import makeBanner from "./header";
 import Popup from './Popup';
 import Timer from './Timer';
+import { getAuth } from 'firebase/auth';
+import { MakeBanner, Banner } from "./banner";
 
 
 function PixelGrid() {
     const [pixels, setPixels] = useState(pixeldata);
     const [selectedColor, setSelectedColor] = useState("#FF0000");
     const [lockout, setLockout] = useState(false);
+
+    const currentUser = getAuth().currentUser;
   
     function handlePixelClick(row, col) {
-      // check if locked out
-      if (!lockout) {
-        // if not locked out
+      // check if not locked out and user is logged in
+      if (!lockout && currentUser) {
+        // change pixel color
         const updatedPixels = JSON.parse(JSON.stringify(pixels));
         updatedPixels[row][col] = selectedColor;
         setPixels(updatedPixels);
         // lock it out
         setButtonPopup(true);
+      } else if (!currentUser) {
+        // if we're not logged in and try to paint a pixel, there's a popup
+        setSignInPopup(true);
       }
-      
     }
   
     const colors = [
@@ -34,24 +40,13 @@ function PixelGrid() {
       "#FFFF00",
       "#FF00FF"
     ];
-  
-    const Banner = ({ title, description, instructions }) => {
-      return (
-        <div class='title-group'>
-          <h1 class='title-t'>{ title }</h1>
-          <h2 class='title-d'>{ description }</h2>
-          <div class='rect-i'>
-            <h4 class='title-i'>{ instructions }</h4>
-          </div>
-        </div>
-      );
-    };
-  
     const title = "NU/Place";
     const description = "NORTHWESTERN'S VIRTUAL ROCK";
     const instructions = "Click on a square to paint it. You can paint one square every 5 minutes.";
+    
   
     const [buttonPopup, setButtonPopup] = useState(false);
+    const [signInPopup, setSignInPopup] = useState(false);
   
     return (
       <>
@@ -79,6 +74,9 @@ function PixelGrid() {
         
         <Popup trigger = {buttonPopup} setTrigger = {setButtonPopup}>
             <Timer/>
+        </Popup>
+        <Popup trigger = {signInPopup} setTrigger = {setSignInPopup}>
+            <h1>log in to paint pixels</h1>
         </Popup>
       </>
     );

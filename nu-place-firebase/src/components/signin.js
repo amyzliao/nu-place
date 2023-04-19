@@ -2,7 +2,7 @@ import React from "react";
 import { signOut, signInWithGoogle } from '../utilities/firebase.js';
 
 
-export const SignInButton = ( users ) => {
+export const SignInButton = ( ) => {
     return (
         <button
             onClick={() => signInWithGoogle()}>

@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import { useUserState } from './utilities/firebase.js';
 import { getAuth } from 'firebase/auth';
-
 import './App.css';
-import axios from 'axios';
-import ColorPicker from "./components/ColorPicker";
-import pixeldata from "./components/pixeldata.json";
-import makeBanner from "./components/header";
-import Popup from './components/Popup';
-import Timer from './components/Timer';
+// import axios from 'axios';
 import PixelGrid from './components/pixelGrid';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SignInButton, SignOutButton } from "./components/signin.js";
+import { MakeBanner } from './components/banner.js';
 
 const LoggedIn = ({ user }) => {
   return (
