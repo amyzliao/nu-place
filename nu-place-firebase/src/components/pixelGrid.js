@@ -9,10 +9,13 @@ import Popup from './Popup';
 import Timer from './Timer';
 import { getAuth } from 'firebase/auth';
 import { MakeBanner, Banner } from "./banner";
+import { setData } from "../utilities/firebase.js";
 
+function PixelGrid({ pixelData }) {
+    console.log("pixel data pixel grid");
+    console.log(pixelData);
 
-function PixelGrid() {
-    const [pixels, setPixels] = useState(pixeldata);
+    // const [pixels, setPixels] = useState(pixeldata);
     const [selectedColor, setSelectedColor] = useState();
     // TODO: if no color selected, nothing happens
     // TODO: deselect color
@@ -20,13 +23,20 @@ function PixelGrid() {
 
     const currentUser = getAuth().currentUser;
   
-    function handlePixelClick(row, col) {
+    async function handlePixelClick(row, col) {
       // check if not locked out and user is logged in
       if (!lockout && currentUser && selectedColor) {
         // change pixel color
-        const updatedPixels = JSON.parse(JSON.stringify(pixels));
+        // const updatedPixels = JSON.parse(JSON.stringify(pixels));
+        const updatedPixels = JSON.parse(JSON.stringify(pixelData));
         updatedPixels[row][col] = selectedColor;
-        setPixels(updatedPixels);
+        // setPixels(updatedPixels);
+        try {
+          await setData(`/`, updatedPixels);
+        } catch (error) {
+          alert(error);
+        }
+        
         // lock it out
         setButtonPopup(true);
       } else if (!currentUser) {
@@ -84,7 +94,7 @@ function PixelGrid() {
         {/* <Banner title={ title } description={ description } instructions={instructions}/> */}
         <div style={{ textAlign: "center" }}>
           <div style={{ display: "inline-block" }}>
-            {pixels.map((row, rowIndex) => (
+            {pixelData.map((row, rowIndex) => (
               <div key={rowIndex} style={{ display: "flex" }}>
                 {row.map((color, colIndex) => (
                   <div

@@ -7,8 +7,9 @@ import PixelGrid from './components/pixelGrid';
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SignInButton, SignOutButton } from "./components/signin.js";
 import { MakeBanner } from './components/banner.js';
+import { useData, setData } from './utilities/firebase.js';
 
-const LoggedIn = ({ user }) => {
+const LoggedIn = ({ user, pixelData }) => {
   return (
     <div>
       {/* <div className = "sign-in-confirmation">
@@ -21,12 +22,12 @@ const LoggedIn = ({ user }) => {
         {/* <h5>{ user.photoURL }</h5> */}
       </div>
       <MakeBanner/>
-      <PixelGrid/>
+      <PixelGrid pixelData={ pixelData }/>
     </div>
   );
 };
 
-const LoggedOut = ( user ) => {
+const LoggedOut = ( user, pixelData ) => {
   return (
     <div>
       {/* <h4>You are not logged in. Log in to start using NU/Place!</h4> */}
@@ -34,14 +35,21 @@ const LoggedOut = ( user ) => {
         <SignInButton user={ user }/>
       </div>
       <MakeBanner/>
-      <PixelGrid/>
+      <PixelGrid pixelData={ pixelData }/>
     </div>
   )
 };
 
 function App() {
+  // pixelData stores data we got from firebase
+  const [pixelData, loading, error] = useData('/'); 
   // the logged in user
   const [user] = useUserState();
+
+  if (error) return <h1>{error}</h1>;
+  if (loading) return <h1>Loading NU/Place</h1>
+  console.log(pixelData);
+  
   console.log("user:");
   console.log(user);
 
@@ -52,7 +60,7 @@ function App() {
 
   return (
     <div className="App">
-      { user ? <LoggedIn user={ user } /> : <LoggedOut user={ user }/> }
+      { user ? <LoggedIn user={ user } pixelData={ pixelData }/> : <LoggedOut user={ user } pixelData={ pixelData }/> }
       {/* { !user ? <></> : 
       <BrowserRouter>
             <Routes>
